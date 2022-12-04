@@ -1,0 +1,27 @@
+<div class="container">
+  <form #f="ngForm">
+    <h2 class="text-center m-4" *ngIf="!categoria.id else actualiza" >Crear Categoria</h2>
+
+    <ng-template #actualiza>
+      <h2 class="text-center m-4 ">Actualizar Categoria</h2>
+     </ng-template>
+
+
+     <div class="form-group row">
+      <label for="categoria" class="col-form-label col-sm-2">Categoria</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" name="categoria" [(ngModel)]="categoria.categoria" required>
+      </div>
+     </div>
+
+     <div class="text-end">
+      <button class="btn btn-success m-4" *ngIf="!categoria.id else actualiza2"  [disabled]="!f.valid" (click)="create()">Crear Categoria</button>
+      <button class="btn btn-dark m-2" [routerLink]="['/categorias']">Volver</button>
+
+      <ng-template #actualiza2>
+        <button class="btn btn-success m-4" [disabled]="!f.valid" (click)="update()">Actualiza Tarea</button>
+     </ng-template>
+    </div>
+
+  </form>
+</div>

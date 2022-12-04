@@ -1,0 +1,39 @@
+<app-menu></app-menu>
+
+<div class="container">
+  <h1 class="text-center m-5">  Lista de categorias </h1>
+  <button class="btn btn-info mb-4" routerLink="/categorias/formulario" >Crear Categorias</button>
+
+
+<table class="table   text-center ">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let categoria of categorias">
+        <td>{{categoria.id}}</td>
+        <td>{{categoria.categoria}}</td>
+        <td>
+          <button class="btn btn-warning" [routerLink]="['/categorias/formulario/', categoria.id]" > <i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="btn btn-danger m-2" (click)="delete(categoria)"> <i class="fa-solid fa-trash"></i> </button>
+        </td>
+    </tr>
+
+  </tbody>
+</table>
+
+<div  *ngIf="categorias.length > 0" class="pagination justify-content-center">
+  <td><i style="cursor: pointer;" class="fa-solid fa-angles-left fa-2x" (click)="rewind()"></i></td>
+  <td colspan="2">
+    <span *ngFor="let page of totalPages; let i = index">
+      <a style="cursor: pointer;" class="page-link d-inline-flex ml-2" (click)="setPage(i)" [ngClass]="{'text-primary':i===page}" > {{i+1}}  </a>
+    </span>
+  </td>
+  <td><i style="cursor: pointer;" class="fa-solid fa-angles-right fa-2x" (click)="forward()"></i></td>
+</div>
+
+</div>

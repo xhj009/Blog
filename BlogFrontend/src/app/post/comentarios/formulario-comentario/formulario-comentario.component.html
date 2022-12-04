@@ -1,0 +1,29 @@
+<app-menu></app-menu>
+
+  <div class="container">
+  <form #f="ngForm">
+    <h2 class="text-center m-4" *ngIf="!comentario.id else actualiza"> Crear Comentario</h2>
+
+
+  <ng-template #actualiza>
+    <h2 class="text-center m-4 ">Actualizar comentario</h2>
+   </ng-template>
+
+    <div class="form-group row">
+      <label for="comentario" class="col-form-label col-sm-2">Comentario</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="comentario" [(ngModel)]="comentario.comentario" required>
+        </div>
+    </div>
+
+
+      <div class="text-end">
+        <button class="btn btn-success m-4" *ngIf="!comentario.id else actualiza2"  [disabled]="!f.valid"(click)="create()">Crear comentario</button>
+        <button class="btn btn-dark m-2" onclick="history.back()"> Volver </button>
+      </div>
+
+      <ng-template #actualiza2>
+        <button class="btn btn-success m-4"  [disabled]="!f.valid" (click)="update()">Actualiza Comentario</button>
+      </ng-template>
+    </form>
+</div>

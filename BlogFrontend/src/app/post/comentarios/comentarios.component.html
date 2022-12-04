@@ -1,0 +1,42 @@
+<app-menu></app-menu>
+
+<div class="container">
+  <h1 class="text-center m-5">Posts</h1>
+  <div  *ngFor="let post of posts">
+  <div class="card text-center m-5 col-md-12">
+    <div class="card-body">
+
+      <h4 class="card-title"> {{post.titulo}} </h4>
+      <p class="card-text">{{post.id}}</p>
+      <p class="card-text">{{post.descripcion}}</p>
+      <p><time datetime="">Fecha de Creacion: {{post.fechaCreacion}}</time></p>
+      <p *ngIf="post.fechaActualizacion"><time datetime="">Fecha de Actualizacion: {{post.fechaActualizacion}}</time></p>
+      <p>Creado por el usuario: {{post.usuario}}</p>
+      <p>Categoria: {{post.categoria}}</p>
+    </div>
+  </div>
+  </div>
+
+  <div *ngFor="let post of posts">
+    <h1 class="text-center">Comentarios ({{comentarios.length}})</h1>
+    <button class="btn btn-info ml-5" [routerLink]="['/posts/' + post.id  + '/formulario/comentarios/']">Crear comentario</button>
+    <button class="btn btn-dark m-2" [routerLink]="['/posts/']">Volver</button>
+
+    <div  *ngFor="let comentario of comentarios">
+      <div class="card text-white bg-dark text-center m-5 col-md-12">
+        <div class="card-body">
+          <p class="card-text">{{ comentario.comentario }}</p>
+          <p><time>Fecha de creacion: {{comentario.fechaCreacion}}</time></p>
+          <p *ngIf="comentario.fechaActualizacion"><time>Fecha de actualizacion: {{comentario.fechaActualizacion}}</time></p>
+          <p>Creado por el usuario: {{comentario.usuario}}</p>
+
+          <button *ngIf=" comentario.usuario === nombreUsuario" class="btn btn-warning"  [routerLink]="['/posts/'+ post.id + '/formulario/comentarios/' + comentario.id]"> <i class="fa-solid fa-pen-to-square"></i></button>
+          <button *ngIf=" comentario.usuario === nombreUsuario" class="btn btn-danger m-2" (click)="delete(comentario)"> <i class="fa-solid fa-trash"></i> </button>
+
+        </div>
+      </div>
+      </div>
+  </div>
+  <h4 class="text-center" *ngIf="comentarios.length == 0 ">No hay comentarios</h4>
+
+</div>
