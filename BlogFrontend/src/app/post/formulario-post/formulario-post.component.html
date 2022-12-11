@@ -29,8 +29,7 @@
       <label for="categoria">Categoria</label>
       <div class="col-md-8">
         <select class="form-control" id="categoria" name="categoria" [(ngModel)]="postSave.categoria">
-          <option [value]="categoria.categoria"  hidden *ngFor="let categoria of categorias">{{categoria.categoria}}</option>
-          <option [value]="categoria.id" *ngFor="let categoria of categorias" required>{{categoria.categoria}}</option>
+          <option [value]="categoria.categoria" *ngFor="let categoria of categorias" required>{{categoria.categoria}}</option>
         </select>
       </div>
     </div>

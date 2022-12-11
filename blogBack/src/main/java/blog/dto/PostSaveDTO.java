@@ -20,5 +20,5 @@ public class PostSaveDTO {
     private LocalDate fechaActualizacion;
     private String usuario;
     @NotNull(message = "El campo categoria es obligatorio")
-    private Integer categoria;
+    private String categoria;
 }

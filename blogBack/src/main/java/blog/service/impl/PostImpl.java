@@ -62,7 +62,7 @@ public class PostImpl implements PostService {
         Post pos = new Post();
         pos.setTitulo(post.getTitulo());
         pos.setDescripcion(post.getDescripcion());
-        Categoria categoria = categoriaRepository.findById(post.getCategoria()).get();
+        Categoria categoria = categoriaRepository.findByCategoria(post.getCategoria());
         pos.setCategoria(categoria);
         pos.setFechaCreacion(fecha);
         pos.setUsuario(obtenerUsuario.usuario());
@@ -84,7 +84,7 @@ public class PostImpl implements PostService {
         Post post = postRepository.getReferenceById(id);
         post.setTitulo(postDTO.getTitulo());
         post.setDescripcion(postDTO.getDescripcion());
-        Categoria categoria = categoriaRepository.findById(postDTO.getCategoria()).get();
+        Categoria categoria = categoriaRepository.findByCategoria(postDTO.getCategoria());
         post.setCategoria(categoria);
         post.setFechaCreacion(postDTO.getFechaCreacion());
         post.setFechaActualizacion(fecha);
